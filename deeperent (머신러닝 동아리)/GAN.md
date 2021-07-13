@@ -1,6 +1,6 @@
 
 
-![GAN_1](./deeperent (머신러닝 동아리)/이미지 설명/GAN_1.png) <br> <br>
+![GAN_1](./img/GAN_1.png) <br> <br>
 
 ![GAN_1](./deeperent (머신러닝 동아리)/이미지 설명/GAN_1.png) <br> <br>
 
