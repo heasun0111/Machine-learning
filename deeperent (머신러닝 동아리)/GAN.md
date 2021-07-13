@@ -1,32 +1,91 @@
-
-<img src="/img/GAN_1.png" width="900" height="500"> <br> <br>
-
-
-<img src="/img/GAN_2.png" width="900" height="500"> <br> <br>
-
-
-<img src="/img/GAN_3.png" width="900" height="500"> <br> <br>
+## GAN
+<br>
+GAN(Generative Adversarial Nets)은 적대적 프로세스(adversarial process)를 통해 생성 모델을 추정하기 위한 새로운 프레임워크를 제안하며, 이 프레임워크에서는 두 가지 모델(generative model, discriminative model) 을 동시에 훈련시킵니다.
+<br> <br> <br>
 
 
-<img src="/img/GAN_4.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_1.png" width="900" height="500"> <br>
+GAN의 두 모델에 대해서 설명하자면<br>
+생성 모델 G(generative model)은 discriminative model이 구별하지 못하도록 training data의 분포를 모방하여 생성하고<br>
+판별 모델 D(discriminative model) 훈련 데이터에서 표본이 추출될 확률을 추정합니다.<br>
+<br> <br> <br>
 
 
-<img src="/img/GAN_5.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_2.png" width="900" height="500">
+즉, Discriminator는 진짜 이미지를 진짜(1)로, 가짜를 가짜(0)로 구분하도록 학습하고, Generater(Neural Network)는 랜덤한 코드를 통해서 이미지를 생성하며, Discriminator를 속여 가짜 이미지를 진짜처럼 만드는 게 목표이다. 즉, 실제 데이터의 분포(D)와 모델이 생성한 데이터의 분포(G) 간의 차이를 줄이는 것이다.<br>
+예시를 들면 Generator Network는 랜덤 노이즈 벡터를 입력받아 이미지를 만드는 업샘플링을 진행하고,
+Discriminator Network는 네트워크에 전달된 이미지가 실제인지 가짜인지를 판별하는 역할을 한다.<br>
+<br> <br> <br>
 
 
-<img src="/img/GAN_6.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_3.png" width="900" height="500">
+심층 생성 모델(Deep generative models)은 최대 가능성 추정 및 관련 전략에서 발생하는 확률적 계산을 근사화하는 것이 어렵고, 생성 맥락에서 조각 선형 단위의 이점을 활용하기가 어렵기 때문에 영향을 덜 받았습니다. 우리는 이러한 어려움을 해결하는 새로운 생성 모델 추정 절차를 제안했습니다.<br>
+GAN은 표본이 모형 분포에서 추출되었는지 또는 모형 분포에서 추출되었는지 여부를 확인하는 방법을 배우는 판별 모형입니다.
+<br> <br> <br>
 
 
-<img src="/img/GAN_7.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_4.png" width="900" height="500"> 
+위조지폐범은 진짜 같은 위조지폐를 만들어(생성, generator) 경찰을 속이고, 경찰은 진짜와 가짜 화폐를 구분(분류, discriminator)하기 노력한다.<br>
+결국 위조지폐범은 구분하기 어려운 위조지폐를 만들게 된다. 경찰은 이게 진짜인지 가짜인지 구별하기 가장 어려운 50% 확률에 수렴하게 된다.
+<br> <br> <br>
 
 
-<img src="/img/GAN_8.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_5.png" width="900" height="500">
+D(x)가 1일 때, (Discriminator가 극단적으로 잘할 때)<br>
+log D(X)=0, D(G(z))=0, log(1-D(G(z)))=1이 되어 식은 0이 되므로<br>
+Discriminator입장에서는 0일 때 max 값을 가지게 된다.<br>
+<br>
+따라서 Discriminator는 위 수식을 0으로 만드는 것을 목표로 한다.<br>
+<br>
+반대로 D(G(z))=1 일 때, (Discriminator가 못해 generator가 극단적으로 잘할 때)<br>
+log D(X)=-∞, log(1-D(G(z)))=-∞ 가 되어 식은 –∞가 되므로<br>
+Generator 입장에서는 min값을 만들 때 최고의 성능을 낸다.<br>
+<br>
+따라서 Generator는 위 수식을 최소값으로 만드는 것을 목표로 한다.
+<br> <br> <br>
 
 
-<img src="/img/GAN_9.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_6.png" width="900" height="500">
+적대적 망의 구성은 슬라이드의 표시된 목적함수형태를 기본으로 하고 있습니다.<br>
+목적함수의 각 세부적인 의미를 입력 z부터 확인해 보겠습니다. 가장 먼저 생성자(G(z)) 함수에 들어가는 입력z는 일반적으로 가우시안 또는 uniform분포가 적용된 노이즈라고 할 수 있습니다. 해당 노이즈 입력들이 생성자(G(z)) 함수를 통해 만들어진 데이터의 분포를 𝑃_𝑍 (Z)라고 하며 반대로 𝑃_𝑑𝑎𝑡𝑎 (X)는 실제 원본 이미지의 데이터 분포라고 할 수 있습니다.<br>
+다음으로 앞서 나온 생성자(G(z)) 함수와 함께 판별자(D(x))함수는 파라미터로 구성되어 미분가능한 함수입니다. 각각 이미지의 데이터 분포 출력, 이미지의 원본여부를 scalar값으로 출력하며 학습이 진행되는 함수입니다.  학습이 진행될수록 생성자(G(z))함수는 슬라이드의 녹색선 분포의 변화와 같이 학습이 이루어집니다. 학습이 진행될수록 검은 그래프인 원본데이터 분포와 일치되는 방향으로 학습을 진행시키게 됩니다. 생성자(G(z))함수의 학습이 진행됨에 따라 판별자(D(x))함수는 슬라이드의 파란그래프와 같이 점점 직선에 가까운 방향으로 학습이 진행됩니다.<br>
+이상적인 학습이 이루어지게 된다면 결국엔 generative분포와 원본데이터에 대한 예측에 있어 절반 값인 0.5로 수렴이 이루어집니다.
+<br> <br> <br> <br>
 
 
-<img src="/img/GAN_10.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_7.png" width="900" height="500">
+다음은 논문에서 적용 된 GAN의 미니배치 SGD 학습 알고리즘 구성입니다.<br>
+가장 먼저 학습 반복 횟수만큼 for문을 수행하게 됩니다.<br>
+다음으로 k steps는 판별자 함수에 적용되는 하이퍼 파라미터이며 논문팀의 실습에선 1을 적용하여 가장 적은 비용으로 진행을 하였다고 합니다.<br>
+다음은 판별자 함수를 학습하는 부분으로 학습에는 노이즈 분포와 원본데이터 분포가 사용 됩니다. 미니배치의 크기에 맞는 m개의 샘플들이 추출되어 판별능력이 최대가 될 수 있도록 gradient를 ascending 하는 방향으로 업데이트가 진행됩니다.<br>
+이어서 생성자 함수의 학습엔 노이즈 분포만 사용되며 gradient를 descending하는 방향으로 업데이트가 이루어집니다.<br>
+마지막으로 gradient 업데이트에 momentum을 적용하여 실습이 진행되었다고 합니다.
+<br> <br> <br>
 
 
-<img src="/img/GAN_11.png" width="900" height="500"> <br> <br>
+<img src="/img/GAN_8.png" width="900" height="500">
+GAN의 알고리즘 소개이후 논문에선 해당 알고리즘을 통해 학습이 가능한 이유를 설명하고 있습니다.<br>
+해당 알고리즘의 학습 가능성을 보여주기 위해선 2가지에 대한 설명이 선행되어야 합니다.<br>
+첫째는 제시된 목적함수는 언제 optimal을 갖는냐 하는 것 입니다. 이를 증명하기 위해 생성자 함수를 고정시킨 상태에서 판별자의 optimal을 찾고 이어 해당 상황에서 이젠 생성자가 optimal인 과정을 순서대로 보여줍니다. 판별자의 optimal인 경우는 슬라이드의 왼쪽아래 식과 같이 확률계산을 직접 풀어주며 𝑃_𝑍 의 데이터 분포를 𝑃_𝑔 (X)로 매핑함으로써 극 값을 얻을 수 있는 형태로 식을 맞추어 얻을 수 있습니다.<br>
+<br> <br> <br>
+
+
+<img src="/img/GAN_9.png" width="900" height="500">
+이어서 판별자가 optimal인 경우에 생성자의 optimal인 경우는 슬라이드 오른쪽과 같이 optimal인 경우를 대입하고 KL divergence와 JS divergence를 통한 식 정리와 정의에 따라 최소값을 얻게 됩니다.
+<br> <br> <br>
+
+
+<img src="/img/GAN_10.png" width="900" height="500"> 
+앞서 제시된 알고리즘이 학습 효과를 얻기 위해 두 번째로 필요한 내용은 실제로 optimal 값을 갖는 𝐏_𝐠 = 𝐏_𝐝𝐚𝐭𝐚 가 가능 하도록 𝐏_𝐠 의 𝐏_𝐝𝐚𝐭𝐚 수렴 여부 확인 입니다. 논문에서 설명된 증명과정은 사실 수학적으로 완벽한 증명이 아니라는 말이 있습니다. 하지만 논문에선 함수 V(G,D)가 𝐏_𝐠영역에서 볼록 함수이기에 역전파와 업데이트를 통해 수렴이 가능하다 라고 증명 과정을 설명합니다. <br>
+따라서 제시한 알고리즘은 global optimal을 찾아 줌으로써 학습이 가능하다고 이야기 합니다. 실제로 제시된 자료들을 통해 효과를 입증하기도 합니다. 하지만 딥러닝 학습과정에선 파라미터의 임계점은 여러 개 존재하는 구현상의 문제 때문에 어느 정도의 성능 불확실성도 있다고 이야기 합니다. 
+<br> <br> <br>
+
+
+<img src="/img/GAN_11.png" width="900" height="500">
+GAN의 실제 학습엔 MNIST, TFD CIFAR-10 데이터셋이 사용 되었으며 위 슬라이드에서 언급된 활성화 함수와 dropout 적용이 이루어졌다고 합니다.<br>
+왼쪽 아래의 표는 Parzen window를 기반으로한 우도를 예측하는 것을 보여줍니다. 적대적 망은 높은 분산과 높은 차원에선 성능이 떨어지더라도 다른 모델들과 비교했을 때 가장 높은 성능을 보여주었습니다.<br>
+다음으로 오른쪽 사진들은 생성자 함수가 학습을 통해 생성한 이미지들입니다. 노란색 박스로 쳐진 이미지들이 그에 해당한 이미지들로 꽤 좋은 결과를 만들 수 있음을 확인 할 수 있습니다.<br>
+마지막으로 왼쪽 아래 숫자들이 변하는 사진은 latent space에서 각각 1에서 5로 7에서 1로 선형적인 보간법(interpolation)을 적용한 샘플이미지 입니다. 이미지들을 통해 latent space 에서 만들어진 이미지들은 semantic한 정보들을 유지한체로 변형 될 수 있음을 확인 할 수 있다고 합니다.
+<br><br>
+
+#### 이상 GAN 논문 리뷰를 마치겠습니다. 학습내용의 오류나 오타는 댓글을 통해서 부탁드리겠습니다.
