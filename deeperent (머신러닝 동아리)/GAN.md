@@ -1,13 +1,32 @@
 
-
-![GAN_1](./img/GAN_1.png) <br> <br>
-
-![GAN_1](./deeperent (머신러닝 동아리)/이미지 설명/GAN_1.png) <br> <br>
-
-![서비스소개2](./서비스소개/서비스소개2.jpg) <br> <br>
+<img src="/img/GAN_1.png" width="900" height="500"> <br> <br>
 
 
-![서비스소개3](./서비스소개/서비스소개3.jpg) <br> <br>
+<img src="/img/GAN_2.png" width="900" height="500"> <br> <br>
 
 
-![서비스소개4](./서비스소개/서비스소개4.jpg) <br> <br>
+<img src="/img/GAN_3.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_4.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_5.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_6.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_7.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_8.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_9.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_10.png" width="900" height="500"> <br> <br>
+
+
+<img src="/img/GAN_11.png" width="900" height="500"> <br> <br>
