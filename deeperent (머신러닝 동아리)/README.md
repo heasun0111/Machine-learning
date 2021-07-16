@@ -15,4 +15,4 @@ https://kau-deeperent.tistory.com/
 |GAN|4.10|
 |DCGAN|5.1|
 |styleGAN|5.15|
-|starGAN 프로젝트|5.29|
+|starGAN|5.29|
