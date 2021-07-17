@@ -63,14 +63,14 @@ Domain Classification Loss at Generator Generator 또한 도메인을 학습해�
 Reconstruction Loss 이미지의 퀄리티를 지키기 위해 사용한다.<br><br>
 
 
-<img src="/img/starGAN_8.png" width="900" height="500"> <br>
+<img src="/img/starGAN_8.png" width="900" height="400"> <br>
 StarGAN의 판별기/생성기의 최종 손실 함수<br>
 λ값은 하이퍼 파라미터 이다. 논문에서는 λ_cls = 1, λ_rec = 10으로 해서 Reconstruction Loss에 더 높은 패널티를 부여해서 사용한다.<br>
 위의 손실함수들을 조합하면 전 페이지의 손실함수와 생성자 손실함수가 만들어집니다.<br>
 (람다는 하이퍼파라미터 :  λ_cls = 1, λ_rec = 10으로 해서 Reconstruction Loss에 더 높은 패널티를 부여해서 사용한다.)<br>
 <br>
 
-<img src="/img/starGAN_9.png" width="900" height="400"> <br>
+<img src="/img/starGAN_9.png" width="900" height="350"> <br>
 StarGAN 논문에서는 CelebA[5]와 RaFD[6] 데이터 셋을 하나의 모델에서 학습한 결과를 보여준다.
 CelebA는 사람 이미지를 헤어 스타일이나, 얼굴형 등 40여개의 특징으로 분류하였고, RaFD는 8개의 표정으로 사람 사진을 분류한 데이터 셋이다.
 이 두개의 데이터 셋은 각각 다루는 도메인이 다루기 때문에 이를 통합해서 학습하려면 몇 가지 전략이 필요하다.
@@ -83,14 +83,14 @@ Mask Vector사용 : 두 개의 데이터 셋의 Class를 통합하여 학습하�
 그래서 여기에서는 CelebA는 10 epoch로 학습할 때 RaFD는 100 epoch로 학습하는 방법으로 두 데이터 셋을 균등하게 학습한다.
 <br><br>
 
-<img src="/img/starGAN_10.png" width="900" height="350"> <br>
+<img src="/img/starGAN_10.png" width="900" height="500"> <br>
 DIAT 모델인 경우에는 3개의 도메인으로 변환할 때 이미지가 뭉개지는 것이보인다.<br>
 StarGAN 논문의 novelty를 다시 한 번 떠올릴 필요가 있다.<br>
 다른 모델은 k(k-1)개의 신경망을 사용하지만, StarGAN은 단일 신경망(Unified Model)으로 기존 모델보다 더 나은 결과를 보여준다.<br>
 <br>
 
 
-<img src="/img/starGAN_11.png" width="900" height="500"> <br>
+<img src="/img/starGAN_11.png" width="900" height="550"> <br>
 Facial expression에서 단일 label을 구현할 때도, realistic한 결과를 낼 수 있다는 것을 보여준다.<br>
 또한 StarGAN으로 생성된 이미지의 classification loss는 기존의 모델(DIAT, cycleGAN, IcGAN)보다 classification error가 더 적을 뿐만 아니라<br>
 parameter의 수도 적다는 것을 보여주었다.<br>
